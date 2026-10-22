@@ -189,6 +189,7 @@ const SCHEMA = [
     id: 'settings', label: 'Coordonnées et réglages', icon: 'gear', obj: c => c.settings,
     help: 'Les informations utilisées partout sur le site.',
     fields: [
+      { k: 'siteUrl', t: 'text', label: 'Adresse du site', hint: 'Exemple : https://sdbs.netlify.app (utilisée par Google et pour les partages).', type: 'url' },
       { k: 'phone', t: 'text', label: 'Téléphone affiché', hint: 'Exemple : (672) 558-3698' },
       { k: 'whatsapp', t: 'text', label: 'Numéro WhatsApp', hint: 'Indicatif du pays puis numéro, chiffres uniquement. Exemple : 16725583698', digits: true },
       { k: 'email', t: 'text', label: 'Courriel', hint: 'Laissez vide pour ne pas afficher de courriel.', type: 'email' },
