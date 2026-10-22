@@ -3,7 +3,8 @@
   command = "node build.js"
   publish = "public"
   # Ne pas reconstruire le site quand seule une photo est envoyée (elle sera incluse à la publication suivante)
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)assets/uploads'"
+  # (un redéploiement manuel ou le premier déploiement ne sont jamais sautés)
+  ignore = "[ -n \"$CACHED_COMMIT_REF\" ] && [ \"$CACHED_COMMIT_REF\" != \"$COMMIT_REF\" ] && git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':(exclude)assets/uploads'"
 
 [build.environment]
   NODE_VERSION = "20"
