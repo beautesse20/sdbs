@@ -7,8 +7,9 @@ Réponds en français, de façon concise. Livre des fichiers complets plutôt qu
 ## Hébergement
 
 - Dépôt GitHub : `beautesse20/sdbs` (branche `main`).
-- Vercel : projet importé depuis le dépôt (Framework Preset : **Other**). Les réglages de build viennent de `vercel.json`. Chaque commit sur `main` redéploie le site automatiquement.
-- URL prévue : https://sdbs.vercel.app (réglable dans `settings.siteUrl` de `content/site.json`).
+- **Netlify** (hébergeur retenu) : site importé depuis le dépôt ; réglages dans `netlify.toml` (build `node build.js`, publication `public/`, fonctions `netlify/functions/`). `netlify/functions/api.mjs` est un adaptateur qui sert `/api/login|logout|me|content|upload` en réutilisant les fichiers de `api/`.
+- Vercel reste compatible (`vercel.json`) mais n’est plus l’hébergeur principal.
+- Chaque commit sur `main` redéploie le site. L’adresse du site est réglable dans le back-office (Coordonnées et réglages → Adresse du site), stockée dans `settings.siteUrl`.
 
 ## Architecture
 
@@ -24,11 +25,11 @@ Le site est généré à partir d’un fichier de contenu, modifiable par les ad
 - `lib/store.js` : lecture/écriture via l’API GitHub Contents (`beautesse20/sdbs`, branche `main`). En local (`LOCAL_DEV=1`), écrit dans les fichiers.
 - `vercel.json` : `ignoreCommand` saute le build quand seul `assets/uploads/` change (l’envoi d’une photo ne redéploie pas ; la publication suivante l’inclut).
 
-Variables Vercel : `ADMIN_USERS` (`id:motdepasse;id2:motdepasse2`), `GITHUB_TOKEN` (jeton à grain fin, Contents read/write sur le seul dépôt sdbs). Facultatives : `SESSION_SECRET`, `GITHUB_REPO`, `GITHUB_BRANCH`. Aucun secret ne doit être écrit dans le dépôt.
+Variables d’environnement (Netlify ou Vercel) : `ADMIN_USERS` (`id:motdepasse;id2:motdepasse2`), `GITHUB_TOKEN` (jeton à grain fin, Contents read/write sur le seul dépôt sdbs). Facultatives : `SESSION_SECRET`, `GITHUB_REPO`, `GITHUB_BRANCH`. Aucun secret ne doit être écrit dans le dépôt.
 
 Test local : `LOCAL_DEV=1 ADMIN_USERS="test:test1234" node dev-server.js` puis http://localhost:3000/admin.
 
-Documentation utilisateur : `docs/INSTALLATION-BACK-OFFICE.md` (mise en service) et `docs/GUIDE-ADMINISTRATEURS.md`.
+Documentation utilisateur : `docs/INSTALLATION-NETLIFY.md` (mise en service sur Netlify), `docs/INSTALLATION-BACK-OFFICE.md` (version Vercel) et `docs/GUIDE-ADMINISTRATEURS.md`.
 
 ## Charte graphique (à respecter)
 
