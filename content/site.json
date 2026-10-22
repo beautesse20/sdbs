@@ -1,0 +1,182 @@
+{
+  "settings": {
+    "siteUrl": "https://sdbs.vercel.app",
+    "phone": "(672) 558-3698",
+    "whatsapp": "16725583698",
+    "email": "",
+    "address": "9196 140 St, Surrey, BC V3V 5Z2",
+    "seoTitle": "SDBS · Senegalese Diaspora of BC Society",
+    "seoDescription": {
+      "fr": "La Senegalese Diaspora of BC Society (SDBS) rassemble la communauté sénégalaise de Colombie-Britannique : entraide, accueil des nouveaux arrivants, culture et jeunesse. Unis · Solidaires · Engagés.",
+      "en": "The Senegalese Diaspora of BC Society (SDBS) brings together the Senegalese community of British Columbia: mutual aid, welcoming newcomers, culture and youth. United · Supportive · Committed."
+    },
+    "joinButton": { "fr": "Nous rejoindre", "en": "Join us" }
+  },
+  "order": ["hero", "about", "mission", "board", "activities", "gallery", "events", "involved", "contact"],
+  "sections": {
+    "hero": {
+      "visible": true,
+      "overline": { "fr": "Association à but non lucratif · Colombie-Britannique", "en": "Non-profit society · British Columbia" },
+      "title": "Senegalese Diaspora of BC Society",
+      "lead": {
+        "fr": "Nous rassemblons la communauté sénégalaise de Colombie-Britannique pour nous entraider, accueillir les nouveaux arrivants et faire vivre notre culture, dans l’esprit de la teranga.",
+        "en": "We bring together the Senegalese community of British Columbia to support one another, welcome newcomers and share our culture, in the spirit of teranga."
+      },
+      "button1": { "fr": "Devenir membre", "en": "Become a member" },
+      "button2": { "fr": "Nous contacter", "en": "Contact us" },
+      "motto": "UNITED · SUPPORTIVE · COMMITTED",
+      "image": "/assets/logo/sdbs-logo.webp"
+    },
+    "about": {
+      "visible": true,
+      "nav": { "fr": "À propos", "en": "About" },
+      "overline": { "fr": "Qui sommes-nous ?", "en": "Who we are" },
+      "title": { "fr": "Deux pays, une même famille", "en": "Two countries, one family" },
+      "paragraphs": [
+        {
+          "fr": "Fondée le 26 octobre 2024, la SDBS est une société enregistrée en Colombie-Britannique. Elle réunit les Sénégalaises et Sénégalais de la province, leurs familles et toutes les personnes qui partagent ses buts.",
+          "en": "Founded on October 26, 2024, SDBS is a society registered in British Columbia. It brings together Senegalese people across the province, their families, and everyone who shares its goals."
+        },
+        {
+          "fr": "Ses revenus et ses biens servent uniquement ses buts : aucun bénéfice n’est distribué aux membres.",
+          "en": "Its income and assets serve its purposes only: no profit is distributed to members."
+        }
+      ],
+      "values": [
+        { "title": { "fr": "Indépendance", "en": "Independence" }, "text": { "fr": "Aucun parti politique. Nos actions restent non partisanes.", "en": "No political party. Our actions stay non-partisan." } },
+        { "title": { "fr": "Ouverture", "en": "Openness" }, "text": { "fr": "Toutes les origines sont les bienvenues.", "en": "People of every background are welcome." } },
+        { "title": { "fr": "Respect", "en": "Respect" }, "text": { "fr": "De toutes les convictions, avec ou sans religion.", "en": "For every belief, religious or not." } },
+        { "title": { "fr": "Bilinguisme", "en": "Bilingualism" }, "text": { "fr": "Français et anglais, et les langues de la communauté.", "en": "French and English, and the languages of our community." } }
+      ],
+      "factsTitle": { "fr": "En bref", "en": "At a glance" },
+      "facts": [
+        { "label": { "fr": "Nom officiel", "en": "Legal name" }, "value": { "fr": "Senegalese Diaspora of BC Society", "en": "Senegalese Diaspora of BC Society" } },
+        { "label": { "fr": "Sigle", "en": "Acronym" }, "value": { "fr": "SDBS", "en": "SDBS" } },
+        { "label": { "fr": "Création", "en": "Founded" }, "value": { "fr": "26 octobre 2024", "en": "October 26, 2024" } },
+        { "label": { "fr": "Président", "en": "President" }, "value": { "fr": "Emile Nioke", "en": "Emile Nioke" } },
+        { "label": { "fr": "Secrétaire général", "en": "Secretary general" }, "value": { "fr": "El Hadji Ka", "en": "El Hadji Ka" } },
+        { "label": { "fr": "Siège", "en": "Registered office" }, "value": { "fr": "Surrey, BC", "en": "Surrey, BC" } },
+        { "label": { "fr": "Langues", "en": "Languages" }, "value": { "fr": "Français · English · Wolof", "en": "French · English · Wolof" } }
+      ]
+    },
+    "mission": {
+      "visible": true,
+      "nav": { "fr": "Mission", "en": "Mission" },
+      "overline": { "fr": "Notre mission", "en": "Our mission" },
+      "title": { "fr": "Ce qui nous rassemble", "en": "What brings us together" },
+      "intro": { "fr": "Avant chaque action, une question : est-ce que cela rassemble la communauté ?", "en": "Before every action, one question: does this bring the community together?" },
+      "cards": [
+        { "icon": "heart", "title": { "fr": "Entraide et solidarité", "en": "Mutual aid and solidarity" }, "text": { "fr": "Soutenir les familles, les aînés et les personnes en difficulté, notamment en cas de maladie ou de deuil.", "en": "Supporting families, elders and people going through hard times, including illness or bereavement." } },
+        { "icon": "home", "title": { "fr": "Accueil et intégration", "en": "Welcome and integration" }, "text": { "fr": "Faciliter l’arrivée et l’installation des nouveaux arrivants : logement, emploi, démarches et premiers contacts.", "en": "Helping newcomers arrive and settle in: housing, work, paperwork and first connections." } },
+        { "icon": "music", "title": { "fr": "Culture et échanges", "en": "Culture and exchange" }, "text": { "fr": "Faire vivre la culture sénégalaise et le dialogue interculturel avec les autres communautés de la province.", "en": "Keeping Senegalese culture alive and building bridges with the other communities of the province." } },
+        { "icon": "book", "title": { "fr": "Éducation et jeunesse", "en": "Education and youth" }, "text": { "fr": "Encourager l’éducation, la participation des jeunes et le bien-être de toutes les générations.", "en": "Encouraging education, youth involvement and well-being across all generations." } }
+      ]
+    },
+    "board": {
+      "visible": true,
+      "nav": { "fr": "Bureau", "en": "Board" },
+      "overline": { "fr": "Notre bureau", "en": "Our board" },
+      "title": { "fr": "Votre nouveau", "en": "Your new" },
+      "titleHighlight": { "fr": "bureau.", "en": "board." },
+      "intro": { "fr": "Élu par vous, au service de toute la communauté. Merci pour votre participation aux élections et pour votre confiance.", "en": "Elected by you, serving the whole community. Thank you for taking part in the elections and for your trust." },
+      "president": { "role": { "fr": "Président", "en": "President" }, "name": "Emile Nioke" },
+      "vicePresidents": [
+        { "role": { "fr": "1er vice-président", "en": "1st vice-president" }, "name": "Oumar Fall" },
+        { "role": { "fr": "2e vice-présidente", "en": "2nd vice-president" }, "name": "Kisita Ndao" }
+      ],
+      "offices": [
+        {
+          "title": { "fr": "Secrétariat", "en": "Secretariat" },
+          "members": [
+            { "icon": "doc", "role": { "fr": "Secrétaire général", "en": "Secretary general" }, "name": "El Hadji Ka" },
+            { "icon": "pen", "role": { "fr": "Secrétaire général adjoint", "en": "Deputy secretary general" }, "name": "Mathurin Boissy" }
+          ]
+        },
+        {
+          "title": { "fr": "Trésorerie", "en": "Treasury" },
+          "members": [
+            { "icon": "coins", "role": { "fr": "Trésorier général", "en": "Treasurer" }, "name": "Papa Momar Dieng" },
+            { "icon": "ledger", "role": { "fr": "Trésorière générale adjointe", "en": "Deputy treasurer" }, "name": "Ndeye Niangha Sakho" }
+          ]
+        }
+      ],
+      "committeesTitle": { "fr": "Les commissions", "en": "Committees" },
+      "committees": [
+        { "icon": "music", "name": { "fr": "Culture", "en": "Culture" }, "leader": "Adrien Mané", "note": { "fr": "Adjoint : Mahamadou Diallo", "en": "Deputy: Mahamadou Diallo" } },
+        { "icon": "megaphone", "name": { "fr": "Relations publiques", "en": "Public relations" }, "leader": "Abdalah Mbaye", "note": { "fr": "Adjoint : Serigne Donde", "en": "Deputy: Serigne Donde" } },
+        { "icon": "calendar", "name": { "fr": "Organisation", "en": "Events & logistics" }, "leader": "Adama Kandji", "note": { "fr": "Avec Albert Fale et Mame Diarra Bousso", "en": "With Albert Fale and Mame Diarra Bousso" } },
+        { "icon": "heart", "name": { "fr": "Social", "en": "Social affairs" }, "leader": "Tening Ndong", "note": { "fr": "", "en": "" } },
+        { "icon": "home", "name": { "fr": "Accueil & intégration", "en": "Welcome & integration" }, "leader": "Cheikh Ibra Sene", "note": { "fr": "", "en": "" } },
+        { "icon": "book", "name": { "fr": "Religion", "en": "Faith" }, "leader": "Ousseynou Mbacké", "note": { "fr": "", "en": "" } },
+        { "icon": "ball", "name": { "fr": "Sport", "en": "Sports" }, "leader": "Oumar Fall", "note": { "fr": "", "en": "" } },
+        { "icon": "chat", "name": { "fr": "Communication & sages", "en": "Communication & elders" }, "leader": "Soukeyna Magassa", "note": { "fr": "Adjointe : Mireille Sandra Thiaw", "en": "Deputy: Mireille Sandra Thiaw" } }
+      ],
+      "footnote": { "fr": "Servir la communauté dans l’unité et la solidarité.", "en": "Serving the community in unity and solidarity." }
+    },
+    "activities": {
+      "visible": true,
+      "nav": { "fr": "Activités", "en": "Activities" },
+      "overline": { "fr": "Nos activités", "en": "What we do" },
+      "title": { "fr": "Une communauté qui agit ensemble", "en": "A community that acts together" },
+      "items": [
+        { "image": "", "title": { "fr": "Journées culturelles", "en": "Cultural days" }, "text": { "fr": "Musique, danse, cuisine, arts et traditions : expositions, ateliers et fêtes ouvertes à tous.", "en": "Music, dance, food, arts and traditions: exhibitions, workshops and celebrations open to all." } },
+        { "image": "", "title": { "fr": "Sport et bien-être", "en": "Sport and well-being" }, "text": { "fr": "Tournois, matchs amicaux et randonnées pour se retrouver et rester en forme.", "en": "Tournaments, friendly matches and hikes to meet up and stay active." } },
+        { "image": "", "title": { "fr": "Accueil des nouveaux arrivants", "en": "Newcomer support" }, "text": { "fr": "Informations pratiques et accompagnement pour bien démarrer au Canada.", "en": "Practical information and guidance to get a good start in Canada." } },
+        { "image": "", "title": { "fr": "Aînés et familles", "en": "Elders and families" }, "text": { "fr": "Visites, entraide et orientation vers les services locaux, dans la discrétion.", "en": "Visits, mutual aid and referrals to local services, always with discretion." } },
+        { "image": "", "title": { "fr": "Jeunesse et éducation", "en": "Youth and education" }, "text": { "fr": "Mentorat, soutien scolaire, échanges sur les études et transmission de la langue et de la culture.", "en": "Mentoring, homework help, study advice and passing on our language and culture." } },
+        { "image": "", "title": { "fr": "Partenariats", "en": "Partnerships" }, "text": { "fr": "Liens avec les organisations et institutions canadiennes et sénégalaises, et avec les autres communautés de C.-B.", "en": "Ties with Canadian and Senegalese organizations and institutions, and with other BC communities." } }
+      ]
+    },
+    "gallery": {
+      "visible": true,
+      "nav": { "fr": "Photos", "en": "Photos" },
+      "overline": { "fr": "Galerie", "en": "Gallery" },
+      "title": { "fr": "Nos moments ensemble", "en": "Our moments together" },
+      "intro": { "fr": "", "en": "" },
+      "photos": []
+    },
+    "events": {
+      "visible": true,
+      "nav": { "fr": "Événements", "en": "Events" },
+      "overline": { "fr": "Agenda", "en": "Calendar" },
+      "title": { "fr": "Prochains événements", "en": "Upcoming events" },
+      "intro": { "fr": "Rencontres, fêtes culturelles, assemblées : retrouvons-nous.", "en": "Gatherings, cultural celebrations, general meetings: let’s get together." },
+      "items": [],
+      "emptyTitle": { "fr": "Aucun événement annoncé pour le moment", "en": "No event announced yet" },
+      "emptyText": { "fr": "Nos prochaines rencontres sont annoncées en priorité sur WhatsApp. Écrivez-nous pour recevoir les nouvelles.", "en": "Our next gatherings are announced first on WhatsApp. Write to us to receive the news." },
+      "emptyButton": { "fr": "Recevoir les nouvelles", "en": "Get the news" }
+    },
+    "involved": {
+      "visible": true,
+      "nav": { "fr": "S’impliquer", "en": "Get involved" },
+      "overline": { "fr": "Adhésion", "en": "Membership" },
+      "title": { "fr": "Rejoignez la SDBS", "en": "Join SDBS" },
+      "text": { "fr": "Votre participation fait notre force. L’adhésion est ouverte à toute personne qui partage nos buts.", "en": "Your participation is our strength. Membership is open to everyone who shares our goals." },
+      "bullets": [
+        { "fr": "Avoir 18 ans ou plus et accepter les buts et le code de conduite de l’association", "en": "Be 18 or older and accept the society’s purposes and code of conduct" },
+        { "fr": "Régler la cotisation annuelle", "en": "Pay the annual membership fee" },
+        { "fr": "Les plus jeunes participent aux activités avec l’autorisation de leurs parents", "en": "Younger people take part in activities with their parents’ permission" }
+      ],
+      "button": { "fr": "Écrire sur WhatsApp", "en": "Message us on WhatsApp" },
+      "ways": [
+        { "title": { "fr": "Devenir membre", "en": "Become a member" }, "text": { "fr": "Votez à l’assemblée générale, participez aux décisions et soutenez l’association par votre cotisation.", "en": "Vote at the general meeting, take part in decisions and support the society through your membership fee." }, "link": { "fr": "Demander l’adhésion", "en": "Apply to join" }, "message": { "fr": "Bonjour SDBS, je souhaite devenir membre.", "en": "Hello SDBS, I would like to become a member." } },
+        { "title": { "fr": "Donner de son temps", "en": "Volunteer" }, "text": { "fr": "Rejoignez une commission : culture, sport, accueil, social, organisation… Chaque coup de main compte.", "en": "Join a committee: culture, sports, welcome, social affairs, events… Every helping hand counts." }, "link": { "fr": "Proposer mon aide", "en": "Offer to help" }, "message": { "fr": "Bonjour SDBS, je souhaite aider une commission.", "en": "Hello SDBS, I would like to volunteer with a committee." } },
+        { "title": { "fr": "Devenir partenaire", "en": "Partner with us" }, "text": { "fr": "Organisation, entreprise ou institution : soutenez nos projets ou collaborons sur une activité.", "en": "Organization, business or institution: support our projects or work with us on an activity." }, "link": { "fr": "Nous écrire", "en": "Get in touch" }, "message": { "fr": "Bonjour SDBS, je représente une organisation et souhaite échanger sur un partenariat.", "en": "Hello SDBS, I represent an organization and would like to discuss a partnership." } }
+      ]
+    },
+    "contact": {
+      "visible": true,
+      "nav": { "fr": "Contact", "en": "Contact" },
+      "overline": { "fr": "Contact", "en": "Contact" },
+      "title": { "fr": "Parlons-en", "en": "Get in touch" },
+      "intro": { "fr": "Une question, une idée d’activité, un besoin d’aide ? Écrivez-nous.", "en": "A question, an idea for an activity, or need some help? Reach out." },
+      "showMap": true
+    }
+  },
+  "footer": {
+    "legal": {
+      "fr": "Société sans but lucratif enregistrée en vertu de la Societies Act de la Colombie-Britannique. La SDBS n’est pas un organisme de bienfaisance enregistré et n’émet pas de reçus fiscaux.",
+      "en": "Non-profit society registered under the BC Societies Act. SDBS is not a registered charity and does not issue tax receipts."
+    }
+  }
+}
