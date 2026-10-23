@@ -46,7 +46,8 @@ Documentation utilisateur : `docs/INSTALLATION-NETLIFY.md` (mise en service sur 
 - Le numéro de société (S0081364) **ne doit pas** apparaître sur le site.
 - L'encadré « En bref » affiche le président (Emile Nioke) et le secrétaire général (El Hadji Ka).
 - Adhésion : « Avoir 18 ans ou plus… », « Régler la cotisation annuelle », « Les plus jeunes participent aux activités avec l'autorisation de leurs parents ». Pas de bouton « Appeler » dans ce bloc.
-- Contact : téléphone et WhatsApp au (672) 558-3698. Aucune adresse courriel n'est encore fournie.
+- Contact : courriel contact@sunugalbc.ca (téléphone et WhatsApp se règlent dans « Coordonnées et réglages »). Le champ « Nom dans le menu » ne doit contenir qu’un mot court ; le back-office bloque désormais un courriel ou un numéro à cet endroit.
+- Site en ligne : https://sdbs-bc.netlify.app (sdbs.netlify.app appartient à un autre site).
 - La galerie « Photos » n’apparaît que si au moins une photo est ajoutée depuis le back-office.
 
 ## Bureau élu (source : docs/communique-nouveau-bureau.jpg)
@@ -63,6 +64,18 @@ Documentation utilisateur : `docs/INSTALLATION-NETLIFY.md` (mise en service sur 
   - Religion : Ousseynou Mbacké
   - Sport : Oumar Fall
   - Communication & sages : Soukeyna Magassa (adjointe : Mireille Sandra Thiaw)
+
+## Zeffy (paiements en ligne)
+
+- Tout lien `https://www.zeffy.com/...` (cotisation, dons, billetterie d’événement, cartes « S’impliquer ») s’ouvre dans une fenêtre sur le site : `smartLink()` dans `render.js` ajoute `data-zeffy`, et `site.js` convertit le lien en `https://www.zeffy.com/{fr-ca|en-ca}/embed/<type>/<slug>` selon la langue du visiteur. Les autres liens s’ouvrent dans un nouvel onglet.
+- Champs : `sections.involved.membershipUrl|membershipLabel|donationUrl|donationLabel`, `sections.involved.ways[].url`, `sections.events.items[].link|linkLabel`. Vides = boutons cachés.
+
+## Design téléphone (2026-10-23)
+
+- Accueil immersif vert SDBS avec le sceau (`assets/logo/sdbs-pastille.webp` par défaut) et l’étoile du drapeau en filigrane ; une seule animation (apparition du sceau), désactivée si « réduire les animations ».
+- Téléphone (≤ 600 px) : cartes en carrousel (mission, activités, commissions, s’impliquer, événements) avec points ; barre d’actions fixe en bas (« Nous rejoindre » + WhatsApp ou courriel) ; menu plein écran vert. Rien de tout ça sur ordinateur.
+- `settings.contactName` = personne à contacter ; le téléphone n’est affiché que s’il contient au moins 7 chiffres.
+- Le badge « Powered by Netlify » se désactive dans Netlify : Project configuration → General → Powered by Netlify badge.
 
 ## Back-office
 
