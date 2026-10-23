@@ -66,7 +66,7 @@ const SCHEMA = [
     id: 'about', label: 'À propos', icon: 'users', section: true,
     help: 'Présentation de l’association, ses valeurs et l’encadré « En bref ».',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'paragraphs', t: 'list', label: 'Paragraphes', item: 'paragraphe', add: 'un paragraphe', summary: p => p.fr, make: () => bi(), fields: [{ k: null, t: 'bil', label: 'Texte du paragraphe' }] },
@@ -81,7 +81,7 @@ const SCHEMA = [
     id: 'mission', label: 'Mission', icon: 'heart', section: true,
     help: 'Les grandes missions de l’association, présentées en cartes.',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'intro', t: 'bil', label: 'Phrase d’introduction' },
@@ -93,7 +93,7 @@ const SCHEMA = [
     id: 'board', label: 'Bureau et commissions', icon: 'badge', section: true,
     help: 'Les membres élus du bureau et les responsables des commissions.',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre (en blanc)' },
       { k: 'titleHighlight', t: 'bi', label: 'Fin du titre (en jaune)' },
@@ -118,7 +118,7 @@ const SCHEMA = [
     id: 'activities', label: 'Activités', icon: 'star', section: true,
     help: 'Ce que fait l’association. Vous pouvez ajouter une photo à chaque activité.',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'items', t: 'list', label: 'Activités', item: 'activité', add: 'une activité', summary: a => a.title.fr, make: () => ({ image: '', title: bi(), text: bi() }), fields: [
@@ -130,7 +130,7 @@ const SCHEMA = [
     id: 'gallery', label: 'Photos', icon: 'camera', section: true,
     help: 'Une galerie de photos de la communauté. La section n’apparaît sur le site que s’il y a au moins une photo. Demandez toujours l’accord des personnes photographiées (et des parents pour les enfants).',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'intro', t: 'bil', label: 'Phrase d’introduction (facultatif)' },
@@ -148,8 +148,10 @@ const SCHEMA = [
           { k: 'date', t: 'date', label: 'Date', half: true }, { k: 'time', t: 'time', label: 'Heure (facultatif)', half: true },
           { k: 'place', t: 'bi', label: 'Lieu', hint: 'Adresse ou « En ligne ».' },
           { k: 'details', t: 'bil', label: 'Détails (facultatif)' },
-          { k: 'image', t: 'image', label: 'Affiche ou photo (facultatif)', hint: IMG_HINT }] },
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+          { k: 'image', t: 'image', label: 'Affiche ou photo (facultatif)', hint: IMG_HINT },
+          { k: 'link', t: 'text', label: 'Lien de billetterie ou d’inscription (facultatif)', hint: 'Un lien Zeffy (billetterie) s’ouvre dans une fenêtre sur le site ; tout autre lien s’ouvre dans un nouvel onglet.', type: 'url' },
+          { k: 'linkLabel', t: 'bi', label: 'Texte du lien', hint: 'Si vide : « Billets et inscription ».' }] },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'intro', t: 'bil', label: 'Phrase d’introduction' },
@@ -162,22 +164,27 @@ const SCHEMA = [
     id: 'involved', label: 'S’impliquer / Adhésion', icon: 'hands', section: true,
     help: 'Le bloc vert « Rejoignez la SDBS » et les trois façons de s’impliquer.',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'text', t: 'bil', label: 'Texte' },
       { k: 'bullets', t: 'list', label: 'Conditions (avec une étoile)', item: 'condition', add: 'une condition', summary: b => b.fr, make: () => bi(), fields: [{ k: null, t: 'bi', label: 'Condition' }] },
+      { k: 'membershipUrl', t: 'text', label: 'Paiement de la cotisation en ligne (lien Zeffy)', hint: 'Collez le lien de partage de votre formulaire Zeffy (il commence par https://www.zeffy.com/). Il s’ouvrira dans une fenêtre sur le site, en français ou en anglais selon le visiteur. Laissez vide pour cacher le bouton.', type: 'url' },
+      { k: 'membershipLabel', t: 'bi', label: 'Texte du bouton de cotisation', hint: 'Si vide : « Payer ma cotisation en ligne ».' },
+      { k: 'donationUrl', t: 'text', label: 'Dons en ligne (lien Zeffy)', hint: 'Collez le lien de partage de votre formulaire Zeffy (il commence par https://www.zeffy.com/). Il s’ouvrira dans une fenêtre sur le site, en français ou en anglais selon le visiteur. Laissez vide pour cacher le bouton.', type: 'url' },
+      { k: 'donationLabel', t: 'bi', label: 'Texte du bouton de don', hint: 'Si vide : « Faire un don ».' },
       { k: 'button', t: 'bi', label: 'Texte du bouton WhatsApp' },
       { k: 'ways', t: 'list', label: 'Façons de s’impliquer (cartes)', item: 'carte', add: 'une carte', summary: w => w.title.fr, make: () => ({ title: bi(), text: bi(), link: bi(), message: bi() }), fields: [
         { k: 'title', t: 'bi', label: 'Titre' }, { k: 'text', t: 'bil', label: 'Texte' }, { k: 'link', t: 'bi', label: 'Texte du lien' },
-        { k: 'message', t: 'bi', label: 'Message WhatsApp pré-rempli', hint: 'Le message qui s’écrit tout seul quand le visiteur clique.' }] }
+        { k: 'message', t: 'bi', label: 'Message WhatsApp pré-rempli', hint: 'Le message qui s’écrit tout seul quand le visiteur clique.' },
+        { k: 'url', t: 'text', label: 'Ou un lien (Zeffy ou autre site)', hint: 'Facultatif. S’il est rempli, le lien remplace WhatsApp. Un lien Zeffy s’ouvre dans une fenêtre sur le site.', type: 'url' }] }
     ]
   },
   {
     id: 'contact', label: 'Contact', icon: 'chat', section: true,
     help: 'Le téléphone, WhatsApp, le courriel et l’adresse se modifient dans « Coordonnées et réglages ».',
     fields: [
-      { k: 'nav', t: 'bi', label: 'Nom dans le menu' },
+      { k: 'nav', t: 'bi', label: 'Nom dans le menu', hint: 'Un ou deux mots seulement (exemple : « Contact »). Ce n’est pas l’endroit pour un courriel ou un numéro.' },
       { k: 'overline', t: 'bi', label: 'Petit texte au-dessus du titre' },
       { k: 'title', t: 'bi', label: 'Titre' },
       { k: 'intro', t: 'bil', label: 'Phrase d’introduction' },
@@ -190,7 +197,8 @@ const SCHEMA = [
     help: 'Les informations utilisées partout sur le site.',
     fields: [
       { k: 'siteUrl', t: 'text', label: 'Adresse du site', hint: 'Exemple : https://sdbs.netlify.app (utilisée par Google et pour les partages).', type: 'url' },
-      { k: 'phone', t: 'text', label: 'Téléphone affiché', hint: 'Exemple : (672) 558-3698' },
+      { k: 'contactName', t: 'text', label: 'Personne à contacter (facultatif)', hint: 'Exemple : Emile Nioke, président. Le nom va ici, pas dans le téléphone.' },
+      { k: 'phone', t: 'text', label: 'Téléphone affiché', hint: 'Uniquement un numéro. Exemple : (672) 558-3698. Laissez vide pour ne pas afficher de téléphone.' },
       { k: 'whatsapp', t: 'text', label: 'Numéro WhatsApp', hint: 'Indicatif du pays puis numéro, chiffres uniquement. Exemple : 16725583698', digits: true },
       { k: 'email', t: 'text', label: 'Courriel', hint: 'Laissez vide pour ne pas afficher de courriel.', type: 'email' },
       { k: 'address', t: 'text', label: 'Adresse du siège' },
@@ -609,6 +617,15 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#previ
 $('#btn-publish').addEventListener('click', async () => {
   const problems = [];
   (content.sections.events.items || []).forEach((e, i) => { if (!e.date) problems.push(`L’événement n° ${i + 1} n’a pas de date.`); });
+  for (const p of PANELS.filter(p => p.section)) {
+    const nav = content.sections[p.id] && content.sections[p.id].nav;
+    for (const l of ['fr', 'en']) {
+      const v = nav && nav[l] || '';
+      if (v.includes('@') || /\d{6,}/.test(v.replace(/\D/g, '')) || v.length > 22) { problems.push(`« ${p.label} » : le nom dans le menu (« ${v} ») doit être un mot court. Mettez le courriel ou le téléphone dans « Coordonnées et réglages ».`); break; }
+    }
+  }
+  if (content.settings.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(content.settings.email)) problems.push('Le courriel ne semble pas valide.');
+  if (content.settings.phone && content.settings.phone.replace(/\D/g, '').length < 7) problems.push('Le téléphone doit être un numéro (exemple : (672) 558-3698). Pour un nom, utilisez « Personne à contacter ».');
   if (content.settings.whatsapp && !/^\d{8,15}$/.test(content.settings.whatsapp)) problems.push('Le numéro WhatsApp doit contenir uniquement des chiffres, avec l’indicatif du pays.');
   if (problems.length) return ask('Avant de publier', problems, 'Compris', null);
   if (!await ask('Publier les modifications ?', ['Vos modifications seront visibles par tout le monde sur le site d’ici une à deux minutes.'], 'Publier', 'Pas encore')) return;
