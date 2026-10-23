@@ -298,3 +298,24 @@ nav.main a{white-space:nowrap}
   .hero .wrap{gap:16px}
   .hero .logo{width:200px;max-width:60%;margin:0 auto}
 }
+
+/* Téléphone uniquement : les cartes défilent au doigt (slides) ; sur ordinateur, rien ne change */
+@media (max-width:600px){
+  #mission .grid,#activites .grid,.comms,.ways,.events{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;margin-left:-20px;margin-right:-20px;padding:4px 20px 14px;scroll-padding:0 20px;scrollbar-width:none}
+  #mission .grid::-webkit-scrollbar,#activites .grid::-webkit-scrollbar,.comms::-webkit-scrollbar,.ways::-webkit-scrollbar,.events::-webkit-scrollbar{display:none}
+  #mission .grid>*,#activites .grid>*,.ways>*,.events>.event{flex:0 0 84%;scroll-snap-align:start}
+  .comms>.comm{flex:0 0 78%;scroll-snap-align:start;display:block;padding:18px}
+  .comms>.comm .ci{grid-row:auto}
+  .comms>.comm small{margin-top:12px}
+  .events>.empty{flex:0 0 100%}
+  .ways{margin-top:16px}
+  .slide-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:-4px 0 6px}
+  .slide-dots{display:flex;gap:6px}
+  .slide-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:width .2s,background .2s}
+  .slide-dots i.on{width:20px;border-radius:4px;background:var(--vert-sn)}
+  .slide-hint{font-size:13px;color:var(--muted)}
+  .bureau .slide-dots i{background:#2E6A57}
+  .bureau .slide-dots i.on{background:var(--or)}
+  .bureau .slide-hint{color:#C9DAD2}
+}
+@media (min-width:601px){ .slide-nav{display:none} }
