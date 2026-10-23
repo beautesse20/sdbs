@@ -60,6 +60,18 @@ function waHref(settings, msg) {
 function waAttrs(msg) {
   return `class="js-wa" data-msg-fr="${esc(fr(msg))}" data-msg-en="${esc(en(msg))}"`;
 }
+// Zeffy : un lien Zeffy s'ouvre dans une fenêtre sur le site (formulaire intégré, dans la langue du visiteur).
+// Tout autre lien s'ouvre normalement dans un nouvel onglet.
+export function isZeffy(u) { return /^https:\/\/(www\.)?zeffy\.com\//i.test(String(u || '').trim()); }
+function smartLink(url, cls, inner, title) {
+  const u = safeUrl(url);
+  if (!u) return '';
+  const z = isZeffy(url) ? ` data-zeffy="${u}" data-zeffy-fr="${esc(fr(title))}" data-zeffy-en="${esc(en(title))}"` : '';
+  return `<a class="${cls}" href="${u}" target="_blank" rel="noopener"${z}>${inner}</a>`;
+}
+const HEART_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${'<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/>'}</svg>`;
+const CARD_ICON = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg>`;
+
 function head(sec) {
   return `<div class="head">
       ${has(sec.overline) ? `<div class="overline">${L(sec.overline)}</div>` : ''}
@@ -71,22 +83,28 @@ function head(sec) {
 // ---------- sections ----------
 const R = {};
 
-R.hero = (s, c) => `
+R.hero = (s, c) => {
+  const def = !s.image || s.image === '/assets/logo/sdbs-logo.webp';
+  const pic = def ? '/assets/logo/sdbs-pastille.webp' : s.image;
+  return `
 <div class="hero" id="accueil">
+  <svg class="hero-star" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 3 6.6 7 .7-5.3 4.8 1.6 7L12 17.5 5.7 21.1l1.6-7L2 9.3l7-.7z"/></svg>
   <div class="wrap">
     <div>
       ${has(s.overline) ? `<div class="overline">${L(s.overline)}</div>` : ''}
       <h1>${L(s.title)}</h1>
       ${has(s.lead) ? `<p class="lead">${L(s.lead, true)}</p>` : ''}
       <div class="cta">
-        ${has(s.button1) ? `<a class="btn btn-primary" href="#adhesion">${L(s.button1)}</a>` : ''}
-        ${has(s.button2) ? `<a class="btn btn-ghost" href="#contact">${L(s.button2)}</a>` : ''}
+        ${has(s.button1) ? `<a class="btn btn-gold" href="#adhesion">${L(s.button1)}</a>` : ''}
+        ${has(s.button2) ? `<a class="btn btn-line" href="#contact">${L(s.button2)}</a>` : ''}
       </div>
       ${s.motto ? `<div class="motto">${esc(s.motto).split(' · ').join('<span class="d">·</span>')}</div>` : ''}
     </div>
-    ${img(s.image || '/assets/logo/sdbs-logo.webp', 'Senegalese Diaspora of BC Society', 'logo', ' width="420" height="420" loading="eager"')}
+    <div class="hero-visual${def ? ' is-seal' : ' is-photo'}">${img(pic, 'Senegalese Diaspora of BC Society', 'logo', ' width="420" height="420" loading="eager" fetchpriority="high"')}</div>
   </div>
+  <div class="tri hero-tri" aria-hidden="true"><i></i><i></i><i></i></div>
 </div>`;
+};
 
 R.about = (s) => `
 <section class="alt" id="a-propos">
@@ -200,6 +218,7 @@ R.events = (s, c) => `
           <h3>${L(e.title)}</h3>
           <div class="meta">${L({ fr: ff, en: fe })}${e.time ? ' · ' + esc(e.time) : ''}${has(e.place) ? '<br>' + L(e.place) : ''}</div>
           ${has(e.details) ? `<p>${L(e.details, true)}</p>` : ''}
+          ${smartLink(e.link, 'elink', `${L(has(e.linkLabel) ? e.linkLabel : { fr: 'Billets et inscription', en: 'Tickets and registration' })} →`, e.title)}
         </div>
       </article>`;
       }).join('\n      ')}
@@ -226,12 +245,14 @@ R.involved = (s, c) => {
         </ul>` : ''}
       </div>
       <div class="cta">
-        <a class="btn btn-gold js-wa" href="${waHref(c.settings, '')}" target="_blank" rel="noopener">${WA_ICON}${L(s.button)}</a>
+        ${smartLink(s.membershipUrl, 'btn btn-gold', CARD_ICON + L(has(s.membershipLabel) ? s.membershipLabel : { fr: 'Payer ma cotisation en ligne', en: 'Pay my membership online' }), has(s.membershipLabel) ? s.membershipLabel : { fr: 'Adhésion', en: 'Membership' })}
+        ${smartLink(s.donationUrl, 'btn ' + (safeUrl(s.membershipUrl) ? 'btn-line' : 'btn-gold'), HEART_ICON + L(has(s.donationLabel) ? s.donationLabel : { fr: 'Faire un don', en: 'Make a donation' }), has(s.donationLabel) ? s.donationLabel : { fr: 'Faire un don', en: 'Make a donation' })}
+        <a class="btn ${safeUrl(s.membershipUrl) || safeUrl(s.donationUrl) ? 'btn-line' : 'btn-gold'} js-wa" href="${waHref(c.settings, '')}" target="_blank" rel="noopener">${WA_ICON}${L(s.button)}</a>
       </div>
     </div>
     ${(s.ways || []).length ? `<div class="ways">
       ${s.ways.map((w, i) => `<div class="way"><span class="num">${String(i + 1).padStart(2, '0')}</span><h3>${L(w.title)}</h3><p>${L(w.text, true)}</p>
-        <a ${waAttrs(w.message)} href="${waHref(c.settings, w.message)}" target="_blank" rel="noopener">${L(w.link)}${arrow}</a></div>`).join('\n      ')}
+        ${safeUrl(w.url) ? smartLink(w.url, '', L(w.link) + arrow, w.title) : `<a ${waAttrs(w.message)} href="${waHref(c.settings, w.message)}" target="_blank" rel="noopener">${L(w.link)}${arrow}</a>`}</div>`).join('\n      ')}
     </div>` : ''}
   </div>
 </section>`;
@@ -239,22 +260,28 @@ R.involved = (s, c) => {
 
 R.contact = (s, c) => {
   const st = c.settings;
-  const tel = 'tel:+1' + String(st.phone || '').replace(/\D/g, '').replace(/^1(?=\d{10}$)/, '');
+  const digits = String(st.phone || '').replace(/\D/g, '');
+  const telOk = digits.length >= 7;
+  const tel = 'tel:+1' + digits.replace(/^1(?=\d{10}$)/, '');
+  const PERSON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>';
   return `
 <section id="contact">
   <div class="wrap">
     ${head(s)}
     <div class="contact${s.showMap && st.address ? '' : ' nomap'}">
       <div class="card">
-        ${st.phone ? `<div class="cline"><span class="ico">${icon('phone')}</span>
-          <div><small>${L({ fr: 'Téléphone et WhatsApp', en: 'Phone and WhatsApp' })}</small><a href="${esc(tel)}">${esc(st.phone)}</a></div></div>` : ''}
+        ${st.contactName ? `<div class="cline"><span class="ico">${PERSON}</span>
+          <div><small>${L({ fr: 'Personne à contacter', en: 'Contact person' })}</small><strong>${esc(st.contactName)}</strong></div></div>` : ''}
+        ${telOk ? `<div class="cline"><span class="ico">${icon('phone')}</span>
+          <div><small>${st.whatsapp ? L({ fr: 'Téléphone et WhatsApp', en: 'Phone and WhatsApp' }) : L({ fr: 'Téléphone', en: 'Phone' })}</small><a href="${esc(tel)}">${esc(st.phone)}</a></div></div>` : ''}
         ${st.email ? `<div class="cline"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg></span>
           <div><small>${L({ fr: 'Courriel', en: 'Email' })}</small><a href="mailto:${esc(st.email)}">${esc(st.email)}</a></div></div>` : ''}
         ${st.address ? `<div class="cline"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
           <div><small>${L({ fr: 'Siège enregistré', en: 'Registered office' })}</small><strong>${esc(st.address)}</strong></div></div>` : ''}
         <div class="cbtns">
-          ${st.whatsapp ? `<a class="btn btn-primary js-wa" href="${waHref(st, '')}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
-          ${st.phone ? `<a class="btn btn-ghost" href="${esc(tel)}">${L({ fr: 'Appeler', en: 'Call' })}</a>` : ''}
+          ${st.email ? `<a class="btn btn-primary" href="mailto:${esc(st.email)}">${L({ fr: 'Écrire un courriel', en: 'Send an email' })}</a>` : ''}
+          ${st.whatsapp ? `<a class="btn ${st.email ? 'btn-ghost' : 'btn-primary'} js-wa" href="${waHref(st, '')}" target="_blank" rel="noopener">WhatsApp</a>` : ''}
+          ${telOk ? `<a class="btn btn-ghost" href="${esc(tel)}">${L({ fr: 'Appeler', en: 'Call' })}</a>` : ''}
         </div>
       </div>
       ${s.showMap && st.address ? `<div class="map">
@@ -327,6 +354,10 @@ ${opts.preview ? '<meta name="robots" content="noindex">' : `<link rel="canonica
     </a>
     <nav class="main" id="nav" aria-label="Menu">
       ${navItems.join('\n      ')}
+      <div class="nav-cta">
+        ${isShown('involved', c) && has(st.joinButton) ? `<a class="btn btn-gold" href="#adhesion">${L(st.joinButton)}</a>` : ''}
+        ${st.whatsapp ? `<a class="btn btn-line js-wa" href="${waHref(st, '')}" target="_blank" rel="noopener">${WA_ICON}WhatsApp</a>` : (st.email ? `<a class="btn btn-line" href="mailto:${esc(st.email)}">${esc(st.email)}</a>` : '')}
+      </div>
     </nav>
     ${isShown('involved', c) && has(st.joinButton) ? `<a class="btn btn-primary btn-sm join" href="#adhesion">${L(st.joinButton)}</a>` : ''}
     <div class="lang" role="group" aria-label="Langue / Language">
@@ -362,6 +393,16 @@ ${shown.map(id => R[id](c.sections[id], c)).join('\n')}
 </footer>
 
 ${st.whatsapp ? `<a class="wa js-wa" href="${waHref(st, '')}" target="_blank" rel="noopener" aria-label="WhatsApp">${WA_ICON}</a>` : ''}
+<nav class="mbar" aria-label="Actions rapides">
+  ${isShown('involved', c) && has(st.joinButton) ? `<a class="mb-join" href="#adhesion">${L(st.joinButton)}</a>` : ''}
+  ${st.whatsapp ? `<a class="mb-alt js-wa" href="${waHref(st, '')}" target="_blank" rel="noopener">${WA_ICON}<span>WhatsApp</span></a>`
+    : st.email ? `<a class="mb-alt" href="mailto:${esc(st.email)}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><span>${L({ fr: 'Écrire', en: 'Email' })}</span></a>` : ''}
+</nav>
+<dialog class="zmodal" id="zeffy-modal" aria-labelledby="zeffy-title">
+  <div class="zbar"><b id="zeffy-title"></b><button type="button" class="zclose" id="zeffy-close" aria-label="${esc('Fermer / Close')}">×</button></div>
+  <div class="zbody"><iframe id="zeffy-frame" title="Zeffy" allow="payment" allowtransparency="true"></iframe></div>
+  <p class="zfoot">${L({ fr: 'Paiement sécurisé par Zeffy, sans frais pour l’association.', en: 'Secure payment by Zeffy, at no cost to the society.' })} <a id="zeffy-new" href="#" target="_blank" rel="noopener">${L({ fr: 'Ouvrir dans un nouvel onglet', en: 'Open in a new tab' })}</a></p>
+</dialog>
 <script src="/assets/site.js${opts.version ? '?v=' + esc(opts.version) : ''}"></script>
 </body>
 </html>
