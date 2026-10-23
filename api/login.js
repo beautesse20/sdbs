@@ -4,7 +4,7 @@ const attempts = new Map(); // limite simple des essais (par instance)
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Méthode non autorisée' });
-  if (!users().size) return res.status(500).json({ error: 'Aucun administrateur n’est encore configuré (variable ADMIN_USERS sur Vercel).' });
+  if (!users().size) return res.status(500).json({ error: 'Aucun administrateur n’est encore configuré (variable ADMIN_USERS chez l’hébergeur : Netlify → Environment variables).' });
 
   const ip = String(req.headers['x-forwarded-for'] || 'local').split(',')[0].trim();
   const now = Date.now();

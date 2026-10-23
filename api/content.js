@@ -3,7 +3,7 @@ import { getContent, saveContent, configured } from '../lib/store.js';
 import { renderPage } from '../src/render.js';
 
 export default async function handler(req, res) {
-  if (!configured()) return res.status(500).json({ error: 'Le stockage n’est pas configuré (variable GITHUB_TOKEN sur Vercel).' });
+  if (!configured()) return res.status(500).json({ error: 'Le stockage n’est pas configuré (variable GITHUB_TOKEN chez l’hébergeur : Netlify → Environment variables).' });
 
   if (req.method === 'GET') {
     if (!guard(req, res)) return;
