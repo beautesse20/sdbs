@@ -264,3 +264,37 @@ footer .row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;w
 .gallery figure{margin:0 0 16px;break-inside:avoid;border-radius:var(--r-md);overflow:hidden;background:var(--soft)}
 .gallery img{width:100%;height:auto}
 .gallery figcaption{padding:10px 14px;font-size:14px;color:var(--muted)}
+
+.event .elink{display:inline-flex;align-items:center;min-height:44px;margin-top:6px;font-weight:600;color:var(--vert-sn);text-decoration:none}
+.event .elink:hover{text-decoration:underline}
+
+/* Zeffy : formulaire intégré dans une fenêtre */
+.btn svg{width:20px;height:20px;flex-shrink:0}
+.band .cta .btn{width:100%}
+.zmodal{border:0;padding:0;border-radius:var(--r-lg);width:min(720px,calc(100% - 24px));height:min(860px,calc(100% - 24px));max-height:none;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.35)}
+.zmodal[open]{display:flex;flex-direction:column}
+.zmodal::backdrop{background:rgba(11,61,46,.6)}
+.zbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 12px 20px;background:var(--vert-sdbs);color:#fff}
+.zbar b{font-size:16px}
+.zclose{width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+.zclose:hover{background:rgba(255,255,255,.22)}
+.zbody{flex:1;min-height:0;background:#fff}
+.zbody iframe{width:100%;height:100%;border:0;display:block}
+.zfoot{margin:0;padding:10px 20px;font-size:13px;color:var(--muted);background:var(--soft)}
+.zfoot a{color:var(--vert-sn);font-weight:600}
+@media (max-width:600px){.zmodal{width:100%;height:100%;max-width:100%;border-radius:0}}
+.zbody{position:relative}
+.zbody::before{content:"…";position:absolute;inset:0;display:grid;place-items:center;font-size:32px;color:var(--line)}
+.zbody iframe{position:relative;background:transparent}
+
+/* menu : jamais sur deux lignes */
+nav.main a{white-space:nowrap}
+.brand{flex-shrink:0}
+
+/* Logo de l'accueil : toujours rond (jamais étiré), plus petit sur téléphone */
+.hero .logo{height:auto;aspect-ratio:1/1;object-fit:contain}
+@media (max-width:600px){
+  .hero{padding:24px 0 40px}
+  .hero .wrap{gap:16px}
+  .hero .logo{width:200px;max-width:60%;margin:0 auto}
+}
