@@ -1,9 +1,9 @@
 {
   "settings": {
-    "siteUrl": "https://sdbs.vercel.app",
-    "phone": "",
+    "siteUrl": "https://sdbs-bc.com",
+    "phone": "Emile Nioke",
     "whatsapp": "",
-    "email": "",
+    "email": "contact@sunugalbc.ca",
     "address": "9196 140 St, Surrey, BC V3V 5Z2",
     "seoTitle": "SDBS · Senegalese Diaspora of BC Society",
     "seoDescription": {
@@ -690,8 +690,8 @@
     "contact": {
       "visible": true,
       "nav": {
-        "fr": "contact@sunugalbc.ca",
-        "en": "contact@sunugalbc.ca"
+        "fr": "Contact",
+        "en": "Contact"
       },
       "overline": {
         "fr": "Contact",
