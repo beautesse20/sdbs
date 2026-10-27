@@ -1,7 +1,7 @@
 {
   "settings": {
     "siteUrl": "https://sdbs-bc.com",
-    "phone": "Emile Nioke",
+    "phone": "",
     "whatsapp": "",
     "email": "contact@sunugalbc.ca",
     "address": "9196 140 St, Surrey, BC V3V 5Z2",
@@ -13,7 +13,8 @@
     "joinButton": {
       "fr": "Nous rejoindre",
       "en": "Join us"
-    }
+    },
+    "contactName": "Emile Nioke - chercher contact whatssap"
   },
   "order": [
     "hero",
@@ -647,7 +648,8 @@
           "message": {
             "fr": "Bonjour SDBS, je souhaite devenir membre.",
             "en": "Hello SDBS, I would like to become a member."
-          }
+          },
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSf4Z-xMk07yKNevCwX0RI9YdZGLQMStnDF8NMlWZgoX7J2z2Q/viewform"
         },
         {
           "title": {
@@ -665,7 +667,8 @@
           "message": {
             "fr": "Bonjour SDBS, je souhaite aider une commission.",
             "en": "Hello SDBS, I would like to volunteer with a committee."
-          }
+          },
+          "url": ""
         },
         {
           "title": {
@@ -683,9 +686,20 @@
           "message": {
             "fr": "Bonjour SDBS, je représente une organisation et souhaite échanger sur un partenariat.",
             "en": "Hello SDBS, I represent an organization and would like to discuss a partnership."
-          }
+          },
+          "url": ""
         }
-      ]
+      ],
+      "membershipUrl": "https://docs.google.com/forms/d/e/1FAIpQLSf4Z-xMk07yKNevCwX0RI9YdZGLQMStnDF8NMlWZgoX7J2z2Q/viewform",
+      "membershipLabel": {
+        "fr": "Devenir Membre",
+        "en": "Become a member"
+      },
+      "donationUrl": "",
+      "donationLabel": {
+        "fr": "",
+        "en": ""
+      }
     },
     "contact": {
       "visible": true,
@@ -705,7 +719,7 @@
         "fr": "Une question, une idée d’activité, un besoin d’aide ? Écrivez-nous.",
         "en": "A question, an idea for an activity, or need some help? Reach out."
       },
-      "showMap": true
+      "showMap": false
     }
   },
   "footer": {
