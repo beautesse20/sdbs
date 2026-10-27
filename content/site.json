@@ -646,8 +646,8 @@
             "en": "Apply to join"
           },
           "message": {
-            "fr": "Bonjour SDBS, je souhaite devenir membre.",
-            "en": "Hello SDBS, I would like to become a member."
+            "fr": "",
+            "en": ""
           },
           "url": "https://docs.google.com/forms/d/e/1FAIpQLSf4Z-xMk07yKNevCwX0RI9YdZGLQMStnDF8NMlWZgoX7J2z2Q/viewform"
         },
@@ -687,7 +687,7 @@
             "fr": "Bonjour SDBS, je représente une organisation et souhaite échanger sur un partenariat.",
             "en": "Hello SDBS, I represent an organization and would like to discuss a partnership."
           },
-          "url": ""
+          "url": "https://docs.google.com/forms/d/e/1FAIpQLSf4Z-xMk07yKNevCwX0RI9YdZGLQMStnDF8NMlWZgoX7J2z2Q/viewform"
         }
       ],
       "membershipUrl": "https://docs.google.com/forms/d/e/1FAIpQLSf4Z-xMk07yKNevCwX0RI9YdZGLQMStnDF8NMlWZgoX7J2z2Q/viewform",
