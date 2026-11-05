@@ -311,14 +311,6 @@
           },
           "members": [
             {
-              "icon": "doc",
-              "role": {
-                "fr": "Secrétaire général",
-                "en": "Secretary general"
-              },
-              "name": "El Hadji Ka"
-            },
-            {
               "icon": "pen",
               "role": {
                 "fr": "Secrétaire général adjoint",
